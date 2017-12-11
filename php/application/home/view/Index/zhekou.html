@@ -1,0 +1,50 @@
+{extend name="layout" /}
+{block name="title"}折扣规则-网贷小猫官方提现{/block}
+{block name="css"}
+    <link href="/public/static/css/swiper.min.css" rel="stylesheet" type="text/css" />
+{/block}
+
+{block name="headjs"}
+
+{/block}
+{block name="content"}
+
+	<!-- <section class="s-banner">
+			<img src="/public/static/images/huishou-banner.png">
+		</section> -->
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<?php for ($x=0; $x<count($postlist); $x++) { ?>
+					<div class="swiper-slide" title="{$postlist[$x]['name']}">
+						<img src="{$postlist[$x]['logo']}">
+					</div>	
+				<?php } ?>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<div class="zhekou-title">
+				规则说明
+			</div>	
+			<div class="zhekou-write">
+				{$guizhe}
+			</div>
+	
+			<a class="s-link" href="tencent://Message/?Uin=410960361&websiteName=q-zone.qq.com&Menu=yes">
+				立即咨询
+			</a>
+        {/block}
+
+        {block name="bodyjs"}
+		
+		<!-- <script type="text/javascript" src="/public/static/js/jquery-1.9.1.js"></script> -->
+	<script type="text/javascript" src="/public/static/js/fastclick.js"></script>
+	<script type='text/javascript' src='/public/static/js/swiper.min.js'></script>
+	<script type="text/javascript" src="/public/static/js/index.js"></script>
+
+	<script type="text/javascript">
+	</script>
+	
+    {/block}

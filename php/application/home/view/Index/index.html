@@ -1,0 +1,136 @@
+{extend name="layout" /}
+{block name="title"}网贷小猫官方提现{/block}
+{block name="css"}
+    <link href="/public/static/css/swiper.min.css" rel="stylesheet" type="text/css" />
+{/block}
+
+{block name="headjs"}
+
+{/block}
+{block name="content"}
+
+	<!-- Swiper -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<?php for ($x=0; $x<count($postlist); $x++) { ?>
+				<div class="swiper-slide" title="{$postlist[$x]['name']}">
+					<img src="{$postlist[$x]['logo']}">
+				</div>	
+			<?php } ?>
+		</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination"></div>
+	</div>
+
+	<ul class="qq-list">
+		<li>
+			<div class="icon">
+				<img src="/public/static/images/icon-qq.png">
+			</div>
+			<div class="qq">797430361</div>
+			<div class="add">
+				<a href="tencent://Message/?Uin=410960361&websiteName=q-zone.qq.com&Menu=yes">加好友</a>
+			</div>
+		</li>
+		<li>
+			<div class="icon">
+				<img src="/public/static/images/icon-qq.png">
+			</div>
+			<div class="qq">797430361</div>
+			<div class="add">
+				<a href="tencent://Message/?Uin=410960361&websiteName=q-zone.qq.com&Menu=yes">加好友</a>
+			</div>
+		</li>
+		<li>
+			<div class="icon">
+				<img src="/public/static/images/icon-qq.png">
+			</div>
+			<div class="qq">797430361</div>
+			<div class="add">
+				<a href="tencent://Message/?Uin=410960361&websiteName=q-zone.qq.com&Menu=yes">加好友</a>
+			</div>
+		</li>
+	</ul>
+
+	<section class="intro">
+		<div class="title">小白如何开展花呗业务</div>
+		<div class="write" id="mp3dataid" data-mp3="{$mp3}">
+			<div id="containner">
+				
+				<div style="width:52px; height: 52px; border-radius: 11px; text-align: center; position:absolute;top:0;left:0;z-index:99;">
+					<div><img id="icon" src="/public/static/images/icon-play.png" onclick="play()" width="52" height="52" /></div>
+				</div>
+				<div style="width:100%; height:22px;   position: absolute;top: 14px;right: 0;z-index:97;"><span id="showtime" >00:00</span><span>/</span><span id="currenttime">00:00</span></div>
+
+				<div style="  margin-top: 23px; float:left;padding:0 110px 0 65px ;width:100%;">
+					<div id="barbox" class="graph" style="width:100%;  ">
+						<strong id="bar" class="bar" style="width: 0%;"></strong>
+					</div>
+				</div>
+				
+				
+				<div id="divplayer">
+					<audio id="player" src="" loop="0" autostart="true" hidden="true"></audio>
+				</div>
+				
+			</div>
+			
+		</div>
+	</section>
+
+	<section class="intro">
+		<div class="title">蚂蚁花呗</div>
+		<div class="write">
+			花呗秒到
+			<br> 1.走口碑扫码支付单笔200/249/299
+			<br> 2.风控花呗走天猫提供账号密码，点位较高
+			<br> 花呗货到
+			<br> 给客户链接，自己拍下付款，隔天货到回款
+		</div>
+	</section>
+
+	<section class="intro">
+		<div class="title">京东白条</div>
+		<div class="write">
+			白条秒到
+			<br>有闪付额度可以秒到，需要发卡号和客户姓名、京东手机号、支付密码（6位数字）
+			<br> 白条货到
+			<br>给客户链接自己拍，上午下单，下午货到回款，下午下单，隔天上午货到回款
+		</div>
+	</section>
+
+
+	<section class="intro">
+		<div class="title">苏宁任性付</div>
+		<div class="write">
+
+		</div>
+	</section>
+
+
+
+	<div class="fixed-menu">
+		<span>
+			<a href="{:url('/huishou')}">手机/配件回收</a>
+		</span>
+		<span>
+			<a href="{:url('/zhekou')}">折扣商品出售</a>
+		</span>
+		<div class="line"></div>
+	</div>
+	
+
+
+        {/block}
+
+        {block name="bodyjs"}
+		
+		<!-- <script type="text/javascript" src="/public/static/js/jquery-1.9.1.js"></script> -->
+	<script type="text/javascript" src="/public/static/js/fastclick.js"></script>
+	<script type='text/javascript' src='/public/static/js/swiper.min.js'></script>
+	<script type="text/javascript" src="/public/static/js/index.js"></script>
+
+	<script type="text/javascript">
+	</script>
+	
+    {/block}

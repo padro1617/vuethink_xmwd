@@ -1,0 +1,165 @@
+{extend name="layout" /}
+{block name="title"}手机/配件回收-网贷小猫官方提现{/block}
+{block name="css"}
+	<link href="/public/static/css/swiper.min.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+			body{
+				font-family:"Segoe UI";
+			  }
+			  li{
+				list-style:none;
+			  }
+			  a{
+				text-decoration:none;
+			  }
+			  .pagination {
+				  position: relative;
+		  
+				}
+				.pagination li{
+				  display: inline-block;
+				  margin:0 5px;
+				}
+				.pagination li a{
+				  padding:6px 10px;
+				  display:inline-block;
+				  border:1px solid #ddd;
+				  background:#fff;
+		  
+				  color:#0E90D2;
+				}
+				.pagination li a:hover{
+				  background:#eee;
+				}
+				.pagination li.active a{
+				  background:#0E90D2;
+				  color:#fff;
+				}
+			</style>
+{/block}
+
+{block name="headjs"}
+
+{/block}
+{block name="content"}
+
+	<!-- <section class="s-banner">
+			<img src="/public/static/images/huishou-banner.png">
+		</section> -->
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<?php for ($x=0; $x<count($postlist); $x++) { ?>
+					<div class="swiper-slide" title="{$postlist[$x]['name']}">
+						<img src="{$postlist[$x]['logo']}">
+					</div>	
+				<?php } ?>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<div class="product-list" id="app">
+			<table>
+				<tr>
+					<th class="div-1">机型</div>
+					<th class="div-2">规格</div>
+					<th class="div-3">回收价格</div>
+					<th class="div-4">备注</div>
+				</tr>
+				<tr v-for="item in list">
+					<td class="div-1">{{item.name}}</td>
+					<td class="div-2">{{item.guige}}</td>
+					<td class="div-3">{{item.prize}}</td>
+					<td class="div-4">{{item.remark}}</td>
+				</tr>
+				<!-- <?php for ($x=0; $x<count($Structurelist); $x++) { ?>
+						
+						
+				<?php } ?> -->
+			</table>
+			<div style="text-align:right;margin-top:10px;">
+				<ul class="pagination" >
+					<li v-show="current != 1" @click="current-- && goto(current)" ><a href="#">上一页</a></li>
+					<li v-for="index in pages" @click="goto(index)" :class="{'active':current == index}" :key="index">
+						<a href="#" >{{index}}</a>
+					</li>
+					<li v-show="allpage != current && allpage != 0 " @click="current++ && goto(current++)"><a href="#" >下一页</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<a class="s-link" href="tencent://Message/?Uin=410960361&websiteName=q-zone.qq.com&Menu=yes">
+			立即咨询
+		</a>
+        {/block}
+
+        {block name="bodyjs"}
+		
+		<!-- <script type="text/javascript" src="/public/static/js/jquery-1.9.1.js"></script> -->
+	<script type="text/javascript" src="/public/static/js/fastclick.js"></script>
+	<script type='text/javascript' src='/public/static/js/swiper.min.js'></script>
+	<script type="text/javascript" src="/public/static/js/index.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/vue/1.0.8/vue.min.js"></script>
+	<script type="text/javascript">			
+
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					current:1,
+					showItem:5,//每页显示数量
+					allpage:0,//总页数
+					list:[]
+				},
+				created:function(){
+					console.log('created');
+					this.ajaxdata();
+				},
+				mounted:function(){
+					// console.log('mounted');
+				},
+				computed:{
+					pages:function(){
+							var pag = [];
+							if( this.current < this.showItem ){ //如果当前的激活的项 小于要显示的条数
+								//总页数和要显示的条数那个大就显示多少条
+								var i = Math.min(this.showItem,this.allpage);
+								while(i){
+									pag.unshift(i--);
+								}
+							}else{ //当前页数大于显示页数了
+								var middle = this.current - Math.floor(this.showItem / 2 ),//从哪里开始
+									i = this.showItem;
+								if( middle >  (this.allpage - this.showItem)  ){
+									middle = (this.allpage - this.showItem) + 1
+								}
+								while(i--){
+									pag.push( middle++ );
+								}
+							}
+							return pag
+						}
+				},
+				methods:{
+					goto:function(index){
+						//if(index == this.current) return;
+						this.current = index;
+						this.ajaxdata();
+						//这里可以发送ajax请求
+						// this.$emit('ongoto',index);
+					},
+					ajaxdata(){
+						var _this=this;
+						$.post('',{current:this.current,pagesize:this.showItem},function(data){
+							var d=data.data;
+							_this.allpage= Math.ceil(d.pagecount / _this.showItem) ;
+							_this.list=d.list;
+							// console.log(d);
+						});
+					}
+				}
+			})
+	</script>
+	
+    {/block}
