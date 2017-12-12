@@ -73,10 +73,10 @@
         })
       },
       uploadSuccess(res, file, fileList) {
-        this.form.MP3 = res.data
+        this.form.MP3 =window.HOST +'/'+  res.data
         let data = {
           name: '音频',
-          url: window.HOST + res.data
+          url:window.HOST +'/'+ res.data
         }
         if (this.fileList.length) {
           this.fileList[0] = data

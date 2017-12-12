@@ -119,10 +119,10 @@
         })
       },
       uploadSuccess(res, file, fileList) {
-        this.form.logo = res.data
+        this.form.logo = window.HOST +'/'+ res.data
         let data = {
           name: '图片',
-          url: window.HOST + res.data
+          url: window.HOST+'/' + res.data
         }
         if (this.fileList.length) {
           this.fileList[0] = data
